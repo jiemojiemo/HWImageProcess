@@ -11,7 +11,9 @@ private:
 public:
 	Image(unsigned int w, unsigned int h, unsigned int n, const unsigned char* data);
 	Image(const Image& image);
+	Image(Image&& image);
 	Image& operator=(const Image& image);
+	Image& operator=(Image&& image);
 	~Image();
 
 

@@ -8,13 +8,48 @@ Image::Image(unsigned int w, unsigned int h, unsigned int n,
 	memcpy(m_data, data, w*h*n);
 }
 Image::Image(const Image& image) :
-	m_width(image.GetWidth()),
-	m_height(image.GetHeight()),
-	m_components(image.GetComponents())
+	m_width(image.m_width),
+	m_height(image.m_height),
+	m_components(image.m_components)
 {
 	int wholeSize = m_width*m_height*m_components;
 	m_data = new unsigned char[wholeSize];
 	memcpy(m_data, image.GetData(), wholeSize);
+}
+Image::Image(Image&& image):
+	m_width(image.m_width),
+	m_height(image.m_height),
+	m_components(image.m_components),
+	m_data(image.m_data)
+{
+	image.m_data = nullptr;
+}
+Image& Image::operator=(const Image& image)
+{
+	if (this == &image)
+		return *this;
+
+	delete[] m_data;
+	m_width = image.m_width;
+	m_height = image.m_height;
+	m_components = image.m_components;
+	unsigned int size = m_width*m_height*m_components;
+	m_data = new unsigned char[size];
+	memcpy(m_data, image.m_data, size);
+	return *this;
+}
+Image& Image::operator=(Image&& image)
+{
+	if (this == &image)
+		return *this;
+
+	delete[] m_data;
+	m_width = image.m_width;
+	m_height = image.m_height;
+	m_components = image.m_components;
+	m_data = image.m_data;
+
+	return *this;
 }
 Image::~Image()
 {

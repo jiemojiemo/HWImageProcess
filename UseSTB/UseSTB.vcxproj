@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\lib\Image.cpp" />
+    <ClCompile Include="..\lib\ImageLWManager.cpp" />
     <ClCompile Include="mainUseSTB.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

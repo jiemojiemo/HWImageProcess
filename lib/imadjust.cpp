@@ -18,12 +18,7 @@ Image HW::imadjust(const Image& f, double low_in, double high_in,
 	Image g(f);
 	FOR_EACH_COMPONENT(f.GetHeight(), f.GetWidth(), f.GetComponents())
 	{
-		if (f.At(i, j, k) == 157)
-		{
-			p = f.At(i, j, k) / grayscale;
-		}
 		p = f.At(i, j, k) / grayscale;
-		result = 1.0;
 
 		if (LT(p,low_in))	//[p,low_in, high_in]
 		{
@@ -31,14 +26,14 @@ Image HW::imadjust(const Image& f, double low_in, double high_in,
 		}
 		else if (GE(p,low_in) && LE(p,high_in))	//[low_in,p,high_in]
 		{
-			result = (p - low_in) * slope;
+			result = (p - low_in) * slope + low_out;
 			result = gamma(result, gammaScale);
 		}
 		else if (GT(p,high_in))	//[low_in, high_in, p]
 		{
-			p = high_out;
+			result = high_out;
 		}
-		g.At(i, j, k) = unsigned char((result * grayscale));
+		g.At(i, j, k) = unsigned char(round(result * grayscale));
 	}
 	return g;
 }

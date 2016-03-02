@@ -1,6 +1,7 @@
 #include "imadjust.h"
 #include "HWImageProcess.h"
 #include <cmath>
+#include <assert.h>
 
 double HW::gamma(double r, double g, double c )
 {
@@ -9,28 +10,42 @@ double HW::gamma(double r, double g, double c )
 Image HW::imadjust(const Image& f, double low_in, double high_in,
 	double low_out, double high_out, double gammaScale)
 {
+	assert(low_in < high_in);
 	double grayscale = 255.0;	// unsigned char is 255 only
-	double step = (high_in - low_in) / (high_out - low_out);
+	double slope =  (high_out - low_out)/ (high_in - low_in);
+	double p = 0.0;
+	double result = 0.0;
 	Image g(f);
 	FOR_EACH_COMPONENT(f.GetHeight(), f.GetWidth(), f.GetComponents())
 	{
-		double p = f.At(i, j, k) / grayscale;
-		double step = (high_out - low_out) / (high_in - low_in);
-		double result = 0.0;
+		if (f.At(i, j, k) == 157)
+		{
+			p = f.At(i, j, k) / grayscale;
+		}
+		p = f.At(i, j, k) / grayscale;
+		result = 1.0;
 
-		if (p < low_in)	//[p,low_in, high_in]
+		if (LT(p,low_in))	//[p,low_in, high_in]
 		{
 			result = low_out;
 		}
-		else if (p >= low_in && p <= high_in)	//[low_in,p,high_in]
+		else if (GE(p,low_in) && LE(p,high_in))	//[low_in,p,high_in]
 		{
-			result = gamma(p, gammaScale);
+			result = (p - low_in) * slope;
+			result = gamma(result, gammaScale);
 		}
-		else if (p > high_in)	//[low_in, high_in, p]
+		else if (GT(p,high_in))	//[low_in, high_in, p]
 		{
 			p = high_out;
 		}
-		g.At(i, j, k) = unsigned char(result * grayscale * step);
+		g.At(i, j, k) = unsigned char((result * grayscale));
 	}
 	return g;
+}
+Image HW::imadjust(const Image& f, const std::vector<double> low_high,
+	double low_out, double high_out, double gammaScale /* = 1.0 */)
+{
+	assert(low_high.size() == 2);
+
+	return HW::imadjust(f, low_high[0], low_high[1], low_out, high_out, gammaScale);
 }

@@ -18,13 +18,19 @@
     <ClCompile Include="..\lib\imadjust.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\imadjustTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\Image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\ImageLWManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="imadjustTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\stretchlim.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\imhist.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -148,10 +148,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\include\imadjustTest.cpp" />
     <ClCompile Include="..\lib\imadjust.cpp" />
     <ClCompile Include="..\lib\Image.cpp" />
     <ClCompile Include="..\lib\ImageLWManager.cpp" />
+    <ClCompile Include="..\lib\imhist.cpp" />
+    <ClCompile Include="..\lib\stretchlim.cpp" />
+    <ClCompile Include="imadjustTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\HWImageProcess.h" />

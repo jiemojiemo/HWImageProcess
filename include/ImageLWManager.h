@@ -1,13 +1,23 @@
 #pragma once
 #include "Image.h"
+#include "UnsignedImage.h"
 #include "common/common.h"
 
 #include <cstring>
-class ImageLWManager
+
+class ImageLoader
 {
-	DISALLOW_COPY_AND_ASSIGN(ImageLWManager);
+	DISALLOW_COPY_AND_ASSIGN(ImageLoader);
 public:
-	ImageLWManager() = default;
-	Image LoadImage(const std::string& filePath, int req_comp=0);
-	int WritePNGImage(const Image& image, const std::string& outputPath);
+	ImageLoader() = default;
+	UnsignedImage LoadImage(const std::string& filePath, int req_comp=0);
+
+};
+
+class ImageWriter
+{
+	DISALLOW_COPY_AND_ASSIGN(ImageWriter);
+public:
+	ImageWriter() = default;
+	int WritePNGImage(const UnsignedImage& image, const std::string& outputPath);
 };

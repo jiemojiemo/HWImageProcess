@@ -65,9 +65,9 @@ int main()
 
 void ImageLWManagerTest()
 {
-	ImageLWManager LoadWrite;
+	ImageLoader loader;
 	std::string input("../Resource/clockA-t.jpg");
-	auto image = LoadWrite.LoadImage(input);
+	auto image = loader.LoadImage(input);
 	int row = image.GetHeight();
 	int col = image.GetWidth();
 	int comp = image.GetComponents();
@@ -79,5 +79,6 @@ void ImageLWManagerTest()
 			{
 				image.At(i, j, k) = 255 - image.At(i,j,k);
 			}
-	LoadWrite.WritePNGImage(image, "output.png");
+	ImageWriter writer;
+	writer.WritePNGImage(image, "111.png");
 }

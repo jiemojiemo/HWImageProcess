@@ -1,30 +1,26 @@
 #pragma once
 #include <assert.h>
 #include <cstring>
+
 class Image
 {
-private:
-	int m_width;
-	int m_height;
-	int m_components;
-	unsigned char* m_data;
+protected:
+	unsigned int m_width;
+	unsigned int m_height;
+	unsigned int m_components;
 public:
-	Image(unsigned int w, unsigned int h, unsigned int n, const unsigned char* data);
+	Image(int w,int h,int n);
 	Image(const Image& image);
 	Image(Image&& image);
 	Image& operator=(const Image& image);
 	Image& operator=(Image&& image);
-	~Image();
-
-
+	virtual ~Image()=default;
 
 	//getter and setter
-	int GetWidth()const;
-	int GetHeight()const;
-	int GetComponents()const;
-	unsigned char* GetData()const;
-
-	const unsigned char& At(int row, int col, int nth)const;
-
-	unsigned char&At(int row, int col, int nth);
+	unsigned int GetWidth()const;
+	unsigned int GetHeight()const;
+	unsigned int GetComponents()const;
 };
+
+
+

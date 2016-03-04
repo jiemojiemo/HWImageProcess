@@ -4,7 +4,7 @@
 #include "stb/stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
-Image ImageLWManager::LoadImage(const std::string& filePath, int req_comp /*= 0*/)
+UnsignedImage ImageLoader::LoadImage(const std::string& filePath, int req_comp /*= 0*/)
 {
 	int x, y, n;
 	auto data = stbi_load(filePath.c_str(), &x, &y, &n, req_comp);
@@ -16,12 +16,12 @@ Image ImageLWManager::LoadImage(const std::string& filePath, int req_comp /*= 0*
 		std::cerr << "Can't open the file.\n";
 		exit(-1);
 	}
-	Image image(x, y, n, data);
+	UnsignedImage image(x, y, n, data);
 
 	return image;
 }
 
-int ImageLWManager::WritePNGImage(const Image& image, const std::string& outputPath)
+int ImageWriter::WritePNGImage(const UnsignedImage& image, const std::string& outputPath)
 {
 	return stbi_write_png(outputPath.c_str(),
 		image.GetWidth(),

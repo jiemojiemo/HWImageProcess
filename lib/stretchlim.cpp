@@ -15,7 +15,7 @@ std::vector<double> HW::strechlim(const Image& image)
 	for (int i = 0; i < hist.size(); ++i)
 	{
 		auto sum = std::accumulate(hist.begin(), hist.begin() + i, 0.0);
-		if (GT(sum / toltalSize, tol_low))	// > tol_low
+		if (GE(sum / toltalSize, tol_low))	// > tol_low
 		{
 			lowHigh[0] = i / grayscale;
 			break;
@@ -25,7 +25,7 @@ std::vector<double> HW::strechlim(const Image& image)
 	for (int i = 0; i < hist.size(); ++i)
 	{
 		auto sum = std::accumulate(hist.begin(), hist.begin() + i, 0.0);
-		if (GT(sum / toltalSize, tol_high))	// > tol_high
+		if (GE(sum / toltalSize, tol_high))	// > tol_high
 		{
 			lowHigh[1] = i / grayscale;
 			break;

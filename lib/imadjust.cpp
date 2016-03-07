@@ -7,7 +7,7 @@ double HW::gamma(double r, double g, double c )
 {
 	return c*std::pow(r, g);
 }
-Image HW::imadjust(const Image& f, double low_in, double high_in,
+UnsignedImage HW::imadjust(const UnsignedImage& f, double low_in, double high_in,
 	double low_out, double high_out, double gammaScale)
 {
 	assert(low_in < high_in);
@@ -15,7 +15,7 @@ Image HW::imadjust(const Image& f, double low_in, double high_in,
 	double slope =  (high_out - low_out)/ (high_in - low_in);
 	double p = 0.0;
 	double result = 0.0;
-	Image g(f);
+	UnsignedImage g(f);
 	FOR_EACH_COMPONENT(f.GetHeight(), f.GetWidth(), f.GetComponents())
 	{
 		p = f.At(i, j, k) / grayscale;
@@ -37,7 +37,7 @@ Image HW::imadjust(const Image& f, double low_in, double high_in,
 	}
 	return g;
 }
-Image HW::imadjust(const Image& f, const std::vector<double> low_high,
+UnsignedImage HW::imadjust(const UnsignedImage& f, const std::vector<double> low_high,
 	double low_out, double high_out, double gammaScale /* = 1.0 */)
 {
 	assert(low_high.size() == 2);

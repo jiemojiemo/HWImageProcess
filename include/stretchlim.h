@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Image.h"
+#include "UnsignedImage.h"
 #include <vector>
 namespace HW
 {
-	std::vector<double> strechlim(const Image& image);
+	std::vector<double> strechlim(const UnsignedImage& image);
 }

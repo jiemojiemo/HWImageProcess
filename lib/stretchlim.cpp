@@ -2,7 +2,7 @@
 #include "imhist.h"
 #include "HWImageProcess.h"
 #include <numeric>
-std::vector<double> HW::strechlim(const Image& image)
+std::vector<double> HW::strechlim(const UnsignedImage& image)
 {
 	double grayscale = 255.0;
 

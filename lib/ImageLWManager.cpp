@@ -21,7 +21,7 @@ UnsignedImage ImageLoader::LoadImage(const std::string& filePath, int req_comp /
 	return image;
 }
 
-int ImageWriter::WritePNGImage(const UnsignedImage& image, const std::string& outputPath)
+int ImageWriter::WritePNGImage(const UnsignedImage& image, const std::string& outputPath)const
 {
 	return stbi_write_png(outputPath.c_str(),
 		image.GetWidth(),

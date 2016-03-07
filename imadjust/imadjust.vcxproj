@@ -153,6 +153,7 @@
     <ClCompile Include="..\lib\ImageLWManager.cpp" />
     <ClCompile Include="..\lib\imhist.cpp" />
     <ClCompile Include="..\lib\stretchlim.cpp" />
+    <ClCompile Include="..\lib\UnsigedImage.cpp" />
     <ClCompile Include="imadjustTest.cpp" />
   </ItemGroup>
   <ItemGroup>

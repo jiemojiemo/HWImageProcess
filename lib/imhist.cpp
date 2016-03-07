@@ -1,7 +1,7 @@
 #include "imhist.h"
 #include "HWImageProcess.h"
 #include <iostream>
-std::vector<int> HW::imhist(const Image& image, unsigned int n /*= 256*/)
+std::vector<int> HW::imhist(const UnsignedImage& image, unsigned int n /*= 256*/)
 {
 	std::vector<int> ans(n, 0);
 	double grayscale = 256;

@@ -19,5 +19,5 @@ class ImageWriter
 	DISALLOW_COPY_AND_ASSIGN(ImageWriter);
 public:
 	ImageWriter() = default;
-	int WritePNGImage(const UnsignedImage& image, const std::string& outputPath);
+	int WritePNGImage(const UnsignedImage& image, const std::string& outputPath)const;
 };

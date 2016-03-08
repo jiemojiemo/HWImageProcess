@@ -27,6 +27,6 @@ int ImageWriter::WritePNGImage(const UnsignedImage& image, const std::string& ou
 		image.GetWidth(),
 		image.GetHeight(),
 		image.GetComponents(),
-		image.GetData(),
+		&(image.GetData()[0]),
 		0);
 }

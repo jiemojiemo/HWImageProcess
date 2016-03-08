@@ -9,17 +9,14 @@ protected:
 	unsigned int m_height;
 	unsigned int m_components;
 public:
-	Image(int w,int h,int n);
-	Image(const Image& image);
-	Image(Image&& image);
-	Image& operator=(const Image& image);
-	Image& operator=(Image&& image);
-	virtual ~Image()=default;
+	Image(int w, int h, int n);
+	virtual ~Image() = default;
 
 	//getter and setter
-	unsigned int GetWidth()const;
-	unsigned int GetHeight()const;
-	unsigned int GetComponents()const;
+	unsigned int GetWidth()const { return m_width; }
+	unsigned int GetHeight()const { return m_height; }
+	unsigned int GetComponents()const { return m_components; }
+	unsigned int GetSize()const { return m_width*m_height*m_components; }
 };
 
 
